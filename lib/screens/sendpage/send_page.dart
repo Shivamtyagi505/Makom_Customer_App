@@ -18,6 +18,7 @@ class SendPage extends StatelessWidget {
           IconButton(icon: Icon(Icons.help_outline_sharp), onPressed: () {})
         ],
       ),
+      body: Center(child: Icon(Icons.map_outlined,)),
       
     );
   }

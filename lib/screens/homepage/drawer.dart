@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:makom_customer_app/screens/index.dart';
 import 'package:makom_customer_app/widgets/index.dart';
 
 import '../../constants.dart';
@@ -11,8 +12,9 @@ Widget drawer(BuildContext context) {
       children: [
         Container(
           margin: const EdgeInsets.symmetric(vertical: 20, horizontal: 8),
-          child: _profileInfo(context),
+          child: UserInfo(),
         ),
+        Divider(),
         DrawerItem(text: "History", iconData: Icons.history, onPress: () {}),
         DrawerItem(
           text: "Favourite Places",
@@ -58,43 +60,6 @@ Widget drawer(BuildContext context) {
           text: "Share App",
           iconData: Icons.share,
           onPress: () => Navigator.popAndPushNamed(context, "/share_app"),
-        ),
-      ],
-    ),
-  );
-}
-
-Widget _profileInfo(BuildContext context) {
-  return GestureDetector(
-    onTap: () => Navigator.popAndPushNamed(context, "/profile"),
-      child: Row(
-      children: [
-        CircleAvatar(
-          backgroundColor: Colors.white,
-          radius: 35,
-        ),
-        SizedBox(
-          width: 10,
-        ),
-        Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              "Shahruk K",
-              style: Theme.of(context)
-                  .textTheme
-                  .headline6
-                  .copyWith(fontWeight: FontWeight.bold, color: backgroundColor),
-            ),
-            Text(
-              "+91 77X XXX XXX",
-              style: Theme.of(context)
-                  .textTheme
-                  .subtitle1
-                  .copyWith(fontWeight: FontWeight.bold, color: backgroundColor),
-            )
-          ],
         ),
       ],
     ),

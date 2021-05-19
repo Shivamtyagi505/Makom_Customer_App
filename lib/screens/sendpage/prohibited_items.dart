@@ -14,7 +14,7 @@ class ProhibitedItems extends StatelessWidget {
         padding: const EdgeInsets.all(20),
         children: [
           SizedBox(
-            height: 40,
+            height: 20,
           ),
           Text(
             "Prohibited Items",

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:makom_customer_app/constants.dart';
 import 'package:makom_customer_app/screens/index.dart';
-import 'package:makom_customer_app/screens/splashScreen/splash_screen.dart';
 
 class Routes {
   final routes = <String, WidgetBuilder>{

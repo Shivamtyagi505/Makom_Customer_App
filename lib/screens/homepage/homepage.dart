@@ -52,7 +52,7 @@ class HomePage extends StatelessWidget {
                     Expanded(
                       child: HomePageButton(
                           text: "Send",
-                          onPressed: () => Navigator.popAndPushNamed(
+                          onPressed: () => Navigator.pushNamed(
                               context, "/prohibited_items")),
                     ),
                   ],
