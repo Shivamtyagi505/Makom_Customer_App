@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:makom_customer_app/widgets/buttons.dart';
+import 'package:makom_customer_app/widgets/common_button.dart';
 import 'package:makom_customer_app/widgets/headings.dart';
 import 'package:makom_customer_app/widgets/text_fields.dart';
-import 'package:makom_customer_app/widgets/thin_bottom_navbar.dart';
 
 import '../../constants.dart';
 
@@ -24,7 +24,6 @@ class _SignupScreenState extends State<SignupScreen> {
         backgroundColor: Colors.white,
         title: heading(text: "Signup", color: primaryColor, size: 40),
       ),
-      bottomNavigationBar: thinBottomBar(),
       body: ListView(
         shrinkWrap: true,
         children: [
@@ -39,7 +38,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 txtfieldContainer(
                     child: Row(
                   children: [
-                    Container(width: 40, child: heading(text: "+91")),
+                    Container(child: heading(text: "+91", color: labelColor,size: 20)),
                     Container(
                       height: 45,
                       width: 1,
@@ -69,7 +68,10 @@ class _SignupScreenState extends State<SignupScreen> {
           SizedBox(height: height * 0.05),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: button1(btnTxt: "Signup"),
+            child: CommonButton(
+              text: "Signup",
+              onPressed: () {},
+            ),
           )
         ],
       ),

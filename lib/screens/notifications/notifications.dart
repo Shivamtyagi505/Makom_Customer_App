@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:makom_customer_app/widgets/index.dart';
 import './messages.dart';
 import './orders.dart';
 import '../../constants.dart';
@@ -10,13 +11,8 @@ class Notifications extends StatelessWidget {
       length: 2,
       child: Scaffold(
         appBar: AppBar(
-          title: Text(
-            "Notifications",
-            style: Theme.of(context)
-                .textTheme
-                .headline5
-                .copyWith(color: primaryColor, fontWeight: FontWeight.bold),
-          ),
+          leading: backArrowBtn(context: context),
+          title: appBarTitle(context: context, text: "Notifications"),
           actions: [
             IconButton(icon: Icon(Icons.help_outline_sharp), onPressed: () {})
           ],

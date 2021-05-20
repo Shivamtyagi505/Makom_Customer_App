@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:makom_customer_app/widgets/common_button.dart';
+import 'package:makom_customer_app/widgets/index.dart';
 
 import '../../constants.dart';
 
@@ -7,9 +8,10 @@ class ProhibitedItems extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        leading: backArrowBtn(context: context),
+      ),
       backgroundColor: backgroundColor,
-
       body: ListView(
         padding: const EdgeInsets.all(20),
         children: [
@@ -35,11 +37,29 @@ class ProhibitedItems extends StatelessWidget {
                   .subtitle1
                   .copyWith(letterSpacing: 1, color: labelColor)),
           SizedBox(
-            height: 50,
+            height: 20,
+          ),
+          Center(
+            child: RichText(
+                textScaleFactor: 1.5,
+                text: TextSpan(
+                    text: "Find more on ",
+                    style: Theme.of(context).textTheme.subtitle2.copyWith(
+                        fontWeight: FontWeight.bold, color: labelColor),
+                    children: [
+                      TextSpan(
+                          text: "Packaging Guidelines",
+                          style: TextStyle(
+                              color: primaryColor,
+                              decoration: TextDecoration.underline))
+                    ])),
+          ),
+          SizedBox(
+            height: 40,
           ),
           CommonButton(
             text: "Confirm",
-            onPressed: () => Navigator.pushNamed(context, "/send_page"),
+            onPressed: () => Navigator.popAndPushNamed(context, "/send_page"),
           ),
         ],
       ),

@@ -18,7 +18,6 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     var mq = MediaQuery.of(context).size;
     var height = mq.height;
-
     return Scaffold(
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -31,15 +30,20 @@ class _LoginScreenState extends State<LoginScreen> {
               children: [
                 txtfieldContainer(child: txtField(hintTxt: "Email")),
                 txtfieldContainer(child: txtField(hintTxt: "Password")),
-               CommonButton(
-                 text: "Login",
-                 onPressed: () => Navigator.pushNamed(context, "/home"),
-               ),
+                CommonButton(
+                  text: "Login",
+                  onPressed: () => Navigator.pushNamed(context, "/home"),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     heading(
-                        text: "Forgot Password?", color: primaryColor, size: 20),
+                        text: "Forgot Password?",
+                        color: primaryColor,
+                        size: 20),
                     GestureDetector(
                       onTap: () {
                         Navigator.push(
@@ -84,7 +88,10 @@ class _LoginScreenState extends State<LoginScreen> {
           ),
           Column(
             children: [
-              heading(text: "By signing up you agree to our", size: 20),
+              heading(
+                  text: "By signing up you agree to our",
+                  size: 20,
+                  color: labelColor),
               GestureDetector(
                 onTap: () {
                   Navigator.push(context,
@@ -100,6 +107,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       TextSpan(
                           text: 'Terms and Conditions',
                           style: TextStyle(
+                              color: labelColor,
                               fontWeight: FontWeight.w500,
                               decoration: TextDecoration.underline)),
                       TextSpan(
@@ -110,13 +118,14 @@ class _LoginScreenState extends State<LoginScreen> {
                       TextSpan(
                           text: 'Private Policy',
                           style: TextStyle(
+                              color: labelColor,
                               fontWeight: FontWeight.w500,
                               decoration: TextDecoration.underline)),
                     ],
                   ),
                 ),
               ),
-              SizedBox(height: height * 0.03)
+              SizedBox(height: 10)
             ],
           )
         ],

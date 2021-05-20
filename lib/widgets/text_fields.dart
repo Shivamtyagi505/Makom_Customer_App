@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:makom_customer_app/constants.dart';
 
 Widget txtfieldContainer({@required Widget child}) {
   return Padding(
     padding: const EdgeInsets.symmetric(vertical: 10),
     child: Container(
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(defaultPadding),
           color: Colors.white,
           boxShadow: [
             BoxShadow(

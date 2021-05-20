@@ -15,7 +15,7 @@ Widget messageBubble({@required bool isSender, @required String text}) {
           child: Container(
             decoration: BoxDecoration(
                 color: isSender ? primaryColor : Colors.white,
-                borderRadius: BorderRadius.circular(15),
+                borderRadius: BorderRadius.circular(10),
                 boxShadow: [
                   BoxShadow(
                       color: isSender ? Colors.transparent : Colors.black12,

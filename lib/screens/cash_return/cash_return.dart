@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:makom_customer_app/widgets/index.dart';
 import './pending_list.dart';
 import './requested_list.dart';
 import '../../constants.dart';
@@ -10,13 +11,8 @@ class CashReturn extends StatelessWidget {
       length: 2,
       child: Scaffold(
         appBar: AppBar(
-          title: Text(
-            "Cash Return",
-            style: Theme.of(context)
-                .textTheme
-                .headline5
-                .copyWith(color: primaryColor, fontWeight: FontWeight.bold),
-          ),
+          leading: backArrowBtn(context: context),
+          title: appBarTitle(context: context, text: "Cash Return"),
           actions: [
             IconButton(icon: Icon(Icons.help_outline_sharp), onPressed: () {})
           ],

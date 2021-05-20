@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:makom_customer_app/widgets/index.dart';
 
 import '../constants.dart';
 
@@ -8,13 +9,8 @@ class ShareApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          "ShareApp",
-          style: Theme.of(context)
-              .textTheme
-              .headline5
-              .copyWith(color: primaryColor, fontWeight: FontWeight.bold),
-        ),
+        leading: backArrowBtn(context: context),
+        title: appBarTitle(context: context, text: "Share App"),
         actions: [
           IconButton(icon: Icon(Icons.help_outline_sharp), onPressed: () {})
         ],
@@ -28,8 +24,10 @@ class ShareApp extends StatelessWidget {
               Text(
                 "Share\n Makom App",
                 textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.headline4.copyWith(
-                    color: primaryColor, fontWeight: FontWeight.bold),
+                style: Theme.of(context)
+                    .textTheme
+                    .headline4
+                    .copyWith(color: primaryColor, fontWeight: FontWeight.bold),
               ),
               SizedBox(
                 height: 50,

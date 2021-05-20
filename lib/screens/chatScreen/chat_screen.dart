@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:makom_customer_app/screens/chatScreen/messageBubble.dart';
 import 'package:makom_customer_app/screens/chatScreen/sender_textfield.dart';
 import 'package:makom_customer_app/widgets/buttons.dart';
-import 'package:makom_customer_app/widgets/headings.dart';
-import 'package:makom_customer_app/widgets/thin_bottom_navbar.dart';
 
 import '../../constants.dart';
 
@@ -22,7 +20,7 @@ class _ChatScreenState extends State<ChatScreen> {
         leading: backArrowBtn(context: context),
         elevation: 0,
         backgroundColor: Colors.white,
-        title: heading(text: "Team Makom", color: primaryColor, size: 40),
+        title: appBarTitle(context: context, text: "Team makom"),
         actions: [
           Icon(
             Icons.more_horiz_outlined,
@@ -50,7 +48,7 @@ class _ChatScreenState extends State<ChatScreen> {
             Column(
               mainAxisAlignment: MainAxisAlignment.end,
               crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [senderTextfield(), thinBottomBar()],
+              children: [senderTextfield()],
             ),
           ],
         ),

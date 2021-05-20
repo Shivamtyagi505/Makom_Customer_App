@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:makom_customer_app/screens/index.dart';
+import 'package:makom_customer_app/widgets/index.dart';
 import 'package:makom_customer_app/widgets/switch_tile.dart';
 
 import '../../constants.dart';
@@ -17,13 +18,8 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          "Profile",
-          style: Theme.of(context)
-              .textTheme
-              .headline5
-              .copyWith(color: primaryColor, fontWeight: FontWeight.bold),
-        ),
+        leading: backArrowBtn(context: context),
+        title: appBarTitle(context: context, text: "Profile"),
         actions: [
           IconButton(icon: Icon(Icons.help_outline_sharp), onPressed: () {})
         ],
@@ -39,8 +35,9 @@ class _ProfilePageState extends State<ProfilePage> {
                   color: labelColor,
                 ),
                 Align(
-                  alignment: Alignment.topRight,
-                  child: IconButton(icon: Icon(Icons.edit_outlined), onPressed: () {}))
+                    alignment: Alignment.topRight,
+                    child: IconButton(
+                        icon: Icon(Icons.edit_outlined), onPressed: () {}))
               ],
             ),
           ),
