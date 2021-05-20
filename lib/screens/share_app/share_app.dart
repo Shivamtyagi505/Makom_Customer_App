@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:makom_customer_app/widgets/index.dart';
 
-import '../constants.dart';
+import '../../constants.dart';
 
 class ShareApp extends StatelessWidget {
   @override

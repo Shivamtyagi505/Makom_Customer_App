@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:makom_customer_app/services/location/location_provider.dart';
 import 'package:makom_customer_app/widgets/common_button.dart';
 import 'package:makom_customer_app/widgets/index.dart';
+import 'package:provider/provider.dart';
 
 import '../../constants.dart';
 import '../../widgets/text_fields.dart';
@@ -8,6 +10,7 @@ import '../../widgets/text_fields.dart';
 class SendPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final locationdata = Provider.of<LocationProvider>(context);
     var height = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
@@ -36,12 +39,18 @@ class SendPage extends StatelessWidget {
               txtfieldContainer(
                   child: Row(
                 children: [
-                  Expanded(child: txtField(hintTxt: "Pickup Location")),
-                  Icon(
-                    Icons.location_on,
-                    size: 35,
-                    color: primaryColor,
-                  )
+                  Expanded(
+                      child: txtField(
+                          hintTxt:
+                              locationdata.getAddress ?? "Pickup Location")),
+                  IconButton(
+                      icon: Icon(
+                        Icons.location_on,
+                        size: 35,
+                        color: primaryColor,
+                      ),
+                      onPressed: () =>
+                          Navigator.pushNamed(context, "/googlemaps"))
                 ],
               )),
               SizedBox(
@@ -61,11 +70,14 @@ class SendPage extends StatelessWidget {
                   child: Row(
                 children: [
                   Expanded(child: txtField(hintTxt: "Drop off Location")),
-                  Icon(
-                    Icons.location_on,
-                    size: 35,
-                    color: primaryColor,
-                  )
+                  IconButton(
+                      icon: Icon(
+                        Icons.location_on,
+                        size: 35,
+                        color: primaryColor,
+                      ),
+                      onPressed: () =>
+                          Navigator.pushNamed(context, "/googlemaps"))
                 ],
               )),
             ],

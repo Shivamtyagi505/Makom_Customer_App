@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:makom_customer_app/constants.dart';
-import 'package:makom_customer_app/screens/auth/signup_screen.dart';
 import 'package:makom_customer_app/screens/termsAndConditions/policies_screen.dart';
 import 'package:makom_customer_app/widgets/index.dart';
-import 'package:makom_customer_app/widgets/text_fields.dart';
-import 'package:makom_customer_app/widgets/headings.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key key}) : super(key: key);
@@ -46,10 +43,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         size: 20),
                     GestureDetector(
                       onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => SignupScreen()));
+                        Navigator.pushNamed(context, "/signup");
                       },
                       child: heading(
                           text: "Signup",

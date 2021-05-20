@@ -38,7 +38,9 @@ class _SignupScreenState extends State<SignupScreen> {
                 txtfieldContainer(
                     child: Row(
                   children: [
-                    Container(child: heading(text: "+91", color: labelColor,size: 20)),
+                    Container(
+                        child:
+                            heading(text: "+91", color: labelColor, size: 20)),
                     Container(
                       height: 45,
                       width: 1,
@@ -70,7 +72,7 @@ class _SignupScreenState extends State<SignupScreen> {
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: CommonButton(
               text: "Signup",
-              onPressed: () {},
+              onPressed: () => Navigator.pushNamed(context, "/signup_otp"),
             ),
           )
         ],
