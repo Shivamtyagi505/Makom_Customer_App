@@ -3,12 +3,21 @@ import 'package:makom_customer_app/utils/index.dart';
 import 'package:makom_customer_app/widgets/buttons.dart';
 import 'package:makom_customer_app/widgets/common_button.dart';
 import 'package:makom_customer_app/widgets/headings.dart';
+import 'package:makom_customer_app/widgets/index.dart';
 import 'package:makom_customer_app/widgets/text_fields.dart';
 
 import '../../constants.dart';
 
-class SignupScreen extends StatelessWidget {
+class SignupScreen extends StatefulWidget {
+  @override
+  _SignupScreenState createState() => _SignupScreenState();
+}
+
+class _SignupScreenState extends State<SignupScreen> {
+  TextEditingController _passcontroller = TextEditingController();
+  TextEditingController _cpasscontroller = TextEditingController();
   final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
@@ -70,11 +79,29 @@ class SignupScreen extends StatelessWidget {
                     children: [
                       Expanded(
                           child: txtField(
+                              controller: _passcontroller,
                               hintTxt: "Password",
                               validator: (value) => validatePassword(value))),
                       Icon(Icons.remove_red_eye_rounded)
                     ],
-                  ))
+                  )),
+                  txtfieldContainer(
+                      child: Row(
+                    children: [
+                      Expanded(
+                          child: txtField(
+                              controller: _cpasscontroller,
+                              hintTxt: "Confirm Password",
+                              validator: (value) {
+                                if (value == null) {
+                                  return "Please Re-Enter New Password.";
+                                } else if (value != _passcontroller.text) {
+                                  return "Password does not match.";
+                                }
+                              })),
+                      Icon(Icons.remove_red_eye_rounded)
+                    ],
+                  )),
                 ],
               ),
             ),
@@ -90,7 +117,8 @@ class SignupScreen extends StatelessWidget {
                   }
                 },
               ),
-            )
+            ),
+            SizedBox(height: 20,)
           ],
         ),
       ),
