@@ -84,7 +84,7 @@ class _GooglemapsState extends State<Googlemaps> {
                             CommonButton(
                               text: "Confirm",
                               onPressed: () =>
-                                  Navigator.pop(context, loc.getAddress),
+                                  Navigator.pop(context, loc.getAddress.toString()),
                             ),
                           ],
                         ),

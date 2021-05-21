@@ -20,9 +20,12 @@ Widget txtfieldContainer({@required Widget child}) {
   );
 }
 
-Widget txtField({@required hintTxt}) {
-  return TextField(
+Widget txtField({@required hintTxt, Function validator, int maxLine}) {
+  return TextFormField(
+    validator: validator,
     style: TextStyle(fontSize: 20),
+    minLines: 1,
+    maxLines: maxLine,
     decoration: InputDecoration(
         border: InputBorder.none,
         hintText: hintTxt,

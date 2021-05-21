@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:makom_customer_app/services/location/location_provider.dart';
-import 'package:makom_customer_app/widgets/common_button.dart';
 import 'package:makom_customer_app/widgets/index.dart';
-import 'package:provider/provider.dart';
-
 import '../../constants.dart';
-import '../../widgets/text_fields.dart';
 
-class SendPage extends StatelessWidget {
+class SendPage extends StatefulWidget {
+  @override
+  _SendPageState createState() => _SendPageState();
+}
+
+class _SendPageState extends State<SendPage> {
+  String _pickUp;
+  String _dropOff;
+
   @override
   Widget build(BuildContext context) {
-    final locationdata = Provider.of<LocationProvider>(context);
     var height = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
@@ -41,16 +43,22 @@ class SendPage extends StatelessWidget {
                 children: [
                   Expanded(
                       child: txtField(
-                          hintTxt:
-                              locationdata.getAddress ?? "Pickup Location")),
+                          hintTxt: _pickUp ?? "Pickup Location", maxLine: 4)),
                   IconButton(
                       icon: Icon(
                         Icons.location_on,
                         size: 35,
                         color: primaryColor,
                       ),
-                      onPressed: () =>
-                          Navigator.pushNamed(context, "/googlemaps"))
+                      onPressed: () {
+                        var pickLoc =
+                            Navigator.pushNamed(context, "/googlemaps");
+                        pickLoc.then((value) => {
+                              setState(() {
+                                _pickUp = value;
+                              })
+                            });
+                      })
                 ],
               )),
               SizedBox(
@@ -69,15 +77,25 @@ class SendPage extends StatelessWidget {
               txtfieldContainer(
                   child: Row(
                 children: [
-                  Expanded(child: txtField(hintTxt: "Drop off Location")),
+                  Expanded(
+                      child: txtField(
+                          hintTxt: _dropOff ?? "Drop off Location",
+                          maxLine: 4)),
                   IconButton(
                       icon: Icon(
                         Icons.location_on,
                         size: 35,
                         color: primaryColor,
                       ),
-                      onPressed: () =>
-                          Navigator.pushNamed(context, "/googlemaps"))
+                      onPressed: () {
+                        var dropLoc =
+                            Navigator.pushNamed(context, "/googlemaps");
+                        dropLoc.then((value) => {
+                              setState(() {
+                                _dropOff = value;
+                              })
+                            });
+                      })
                 ],
               )),
             ],
