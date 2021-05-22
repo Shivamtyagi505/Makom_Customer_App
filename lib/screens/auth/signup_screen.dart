@@ -17,7 +17,7 @@ class _SignupScreenState extends State<SignupScreen> {
   TextEditingController _passcontroller = TextEditingController();
   TextEditingController _cpasscontroller = TextEditingController();
   final _formKey = GlobalKey<FormState>();
-
+  bool _obscure = true;
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
@@ -79,29 +79,33 @@ class _SignupScreenState extends State<SignupScreen> {
                     children: [
                       Expanded(
                           child: txtField(
+                              obscure: _obscure,
+                              maxLine: 1,
                               controller: _passcontroller,
                               hintTxt: "Password",
                               validator: (value) => validatePassword(value))),
-                      Icon(Icons.remove_red_eye_rounded)
+                      IconButton(
+                          icon: Icon(Icons.remove_red_eye_outlined),
+                          onPressed: () {
+                            setState(() {
+                              _obscure = _obscure ? false : true;
+                            });
+                          })
                     ],
                   )),
                   txtfieldContainer(
-                      child: Row(
-                    children: [
-                      Expanded(
-                          child: txtField(
-                              controller: _cpasscontroller,
-                              hintTxt: "Confirm Password",
-                              validator: (value) {
-                                if (value == null) {
-                                  return "Please Re-Enter New Password.";
-                                } else if (value != _passcontroller.text) {
-                                  return "Password does not match.";
-                                }
-                              })),
-                      Icon(Icons.remove_red_eye_rounded)
-                    ],
-                  )),
+                      child: txtField(
+                          obscure: _obscure,
+                          maxLine: 1,
+                          controller: _cpasscontroller,
+                          hintTxt: "Confirm Password",
+                          validator: (value) {
+                            if (value == null) {
+                              return "Please Re-Enter New Password.";
+                            } else if (value != _passcontroller.text) {
+                              return "Password does not match.";
+                            }
+                          })),
                 ],
               ),
             ),
@@ -118,7 +122,9 @@ class _SignupScreenState extends State<SignupScreen> {
                 },
               ),
             ),
-            SizedBox(height: 20,)
+            SizedBox(
+              height: 20,
+            )
           ],
         ),
       ),

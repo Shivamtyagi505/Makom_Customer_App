@@ -24,6 +24,7 @@ Widget txtField(
     {@required hintTxt,
     Function validator,
     int maxLine,
+    bool obscure = false,
     TextEditingController controller}) {
   return TextFormField(
     validator: validator,
@@ -31,6 +32,7 @@ Widget txtField(
     style: TextStyle(fontSize: 20),
     minLines: 1,
     maxLines: maxLine,
+    obscureText: obscure,
     decoration: InputDecoration(
         border: InputBorder.none,
         hintText: hintTxt,

@@ -2,8 +2,8 @@
 String validateEmail(String value) {
   Pattern pattern =
       r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]"
-      r"{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]"
-      r"{0,253}[a-zA-Z0-9])?)*$";
+      r"{0,253}[a-zA-Z0-9.])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]"
+      r"{0,253}[a-zA-Z0-9.])?)*$";
   RegExp regex = new RegExp(pattern);
   if (!regex.hasMatch(value) || value == null)
     return 'Enter a valid email address.';
@@ -36,12 +36,8 @@ String validateMobile(String value) {
 
 ///Phone number validator
 String validateNames(String value) {
-  String patttern = r'[!@#<>?":_`~;[\]\\|=+)(*&^%0-9-]';
-  RegExp regExp = new RegExp(patttern);
-  if (value.length == 0) {
+  if (value.length <= 0) {
     return 'This field can\'t be empty.';
-  } else if (!regExp.hasMatch(value)) {
-    return 'Invalid name.';
   }
   return null;
 }
