@@ -45,8 +45,8 @@ class HomePage extends StatelessWidget {
                   children: [
                     Expanded(
                       child: HomePageButton(
-                        text: "Sell",
-                        onPressed: () {},
+                        text: "Inventory",
+                        onPressed: () => Navigator.pushNamed(context, "/items"),
                       ),
                     ),
                     Expanded(

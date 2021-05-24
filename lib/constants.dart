@@ -8,11 +8,12 @@ const double defaultPadding = 10.0;
 
 ///App Theme
 ThemeData themeData = ThemeData.light().copyWith(
-    brightness: Brightness.light,
-    scaffoldBackgroundColor: backgroundColor,
-    accentColor: primaryColor,
-    tabBarTheme: ktabBarTheme,
-    appBarTheme: kappBarTheme);
+  brightness: Brightness.light,
+  scaffoldBackgroundColor: backgroundColor,
+  accentColor: primaryColor,
+  tabBarTheme: ktabBarTheme,
+  appBarTheme: kappBarTheme,
+);
 
 ///App AppBarTheme
 AppBarTheme kappBarTheme = AppBarTheme(
@@ -28,6 +29,25 @@ TabBarTheme ktabBarTheme = TabBarTheme(
     unselectedLabelColor: Colors.grey,
     labelColor: primaryColor,
     indicatorSize: TabBarIndicatorSize.label);
+
+InputDecoration inputDecoration = InputDecoration(
+    labelStyle: TextStyle(color: labelColor, fontWeight: FontWeight.w600),
+    enabledBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(10),
+      borderSide: const BorderSide(color: Colors.grey, width: 1.0),
+    ),
+    focusedBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(10),
+      borderSide: const BorderSide(color: primaryColor, width: 1.0),
+    ),
+    errorBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(10),
+      borderSide: const BorderSide(color: Colors.red, width: 1.0),
+    ),
+    focusedErrorBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(10),
+      borderSide: const BorderSide(color: Colors.red, width: 1.0),
+    ));
 
 Text appBarTitle({BuildContext context, String text}) {
   return Text(

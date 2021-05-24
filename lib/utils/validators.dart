@@ -37,7 +37,14 @@ String validateMobile(String value) {
 ///Phone number validator
 String validateNames(String value) {
   if (value.length <= 0) {
-    return 'This field can\'t be empty.';
+    return 'This field is required.';
+  }
+  return null;
+}
+
+String validateWeight(String value) {
+  if (value.length == 0) {
+    return 'This field is required.';
   }
   return null;
 }

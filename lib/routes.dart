@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:makom_customer_app/constants.dart';
 import 'package:makom_customer_app/screens/auth/signup_otp.dart';
 import 'package:makom_customer_app/screens/index.dart';
+import 'package:makom_customer_app/screens/inventory/add_item.dart';
+import 'package:makom_customer_app/screens/inventory/items.dart';
 import 'package:provider/provider.dart';
 
 import 'services/location/location_provider.dart';
@@ -21,6 +23,8 @@ class Routes {
     '/signup': (BuildContext context) => SignupScreen(),
     '/login': (BuildContext context) => LoginScreen(),
     '/googlemaps': (BuildContext context) => Googlemaps(),
+    '/add_items': (BuildContext context) => AddItemsPage(),
+    '/items': (BuildContext context) => ItemsPage(),
   };
 
   Routes() {
