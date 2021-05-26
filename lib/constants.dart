@@ -31,14 +31,16 @@ TabBarTheme ktabBarTheme = TabBarTheme(
     indicatorSize: TabBarIndicatorSize.label);
 
 InputDecoration inputDecoration = InputDecoration(
+    fillColor: backgroundColor,
+    filled: true,
     labelStyle: TextStyle(color: labelColor, fontWeight: FontWeight.w600),
     enabledBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(10),
-      borderSide: const BorderSide(color: Colors.grey, width: 1.0),
+      borderSide: const BorderSide(color: labelColor, width: 0.5),
     ),
     focusedBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(10),
-      borderSide: const BorderSide(color: primaryColor, width: 1.0),
+      borderSide: const BorderSide(color: primaryColor, width: 0.5),
     ),
     errorBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(10),

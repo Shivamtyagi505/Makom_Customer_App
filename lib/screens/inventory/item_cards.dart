@@ -36,8 +36,24 @@ class ItemCards extends StatelessWidget {
                 height: height * 0.25,
                 width: double.infinity,
                 fit: BoxFit.cover,
-                  image: NetworkImage(image ??
-                      "https://cdn.trendhunterstatic.com/thumbs/the-invisible-bookends.jpeg",)),
+                image: NetworkImage(
+                  image ??
+                      "https://cdn.trendhunterstatic.com/thumbs/the-invisible-bookends.jpeg",
+                ),
+                loadingBuilder: (context, child, loadingProgress) {
+                  if (loadingProgress == null) return child;
+                  return Container(
+                    height: height * 0.25,
+                    width: double.infinity,
+                    child: Center(
+                        child: CircularProgressIndicator(
+                      backgroundColor: primaryColor,
+                    )),
+                  );
+                },
+                errorBuilder: (context, error, stackTrace) =>
+                    Text('Some errors occurred! \n $error'),
+              ),
             ),
             SizedBox(
               height: 10,

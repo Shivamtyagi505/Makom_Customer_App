@@ -83,8 +83,9 @@ class _AddItemsPageState extends State<AddItemsPage> {
   void _onSubmit(context) {
     if (_formKey.currentState.validate()) {
       _formKey.currentState.save();
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text('You have successfully added the item in your inventory.')));
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          content:
+              Text('You have successfully added the item in your inventory.')));
       Navigator.pop(context);
     }
   }
@@ -108,18 +109,21 @@ class _AddItemsPageState extends State<AddItemsPage> {
     return Container(
       margin: const EdgeInsets.all(8.0),
       decoration: BoxDecoration(
-          color: Colors.grey[200], borderRadius: BorderRadius.circular(10)),
+          border: Border.all(color: labelColor, width: 0.5),
+          color: Colors.grey[200],
+          borderRadius: BorderRadius.circular(10)),
       width: double.infinity,
       height: height * 0.40,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text("Tap to select an image."),
           Icon(
             Icons.camera_alt,
             color: Colors.grey[800],
           ),
+          SizedBox(height: 10),
+          Text("Tap to select an image."),
         ],
       ),
     );
@@ -136,7 +140,7 @@ class _AddItemsPageState extends State<AddItemsPage> {
                 children: <Widget>[
                   new ListTile(
                       leading: new Icon(Icons.photo_library),
-                      title: new Text('Photo Library'),
+                      title: new Text('Gallery'),
                       onTap: () {
                         _imgFromGallery();
                         Navigator.of(context).pop();
