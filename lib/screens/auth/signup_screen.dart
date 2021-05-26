@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:makom_customer_app/services/authentication/sign_up.dart';
 import 'package:makom_customer_app/utils/index.dart';
 import 'package:makom_customer_app/widgets/buttons.dart';
 import 'package:makom_customer_app/widgets/common_button.dart';
 import 'package:makom_customer_app/widgets/headings.dart';
 import 'package:makom_customer_app/widgets/index.dart';
 import 'package:makom_customer_app/widgets/text_fields.dart';
+import 'package:toast/toast.dart';
 
 import '../../constants.dart';
 
@@ -14,6 +16,10 @@ class SignupScreen extends StatefulWidget {
 }
 
 class _SignupScreenState extends State<SignupScreen> {
+  TextEditingController _firstnamecontroller = TextEditingController();
+  TextEditingController _lastnamecontroller = TextEditingController();
+  TextEditingController _emailcontroller = TextEditingController();
+  TextEditingController _phonenocontroller = TextEditingController();
   TextEditingController _passcontroller = TextEditingController();
   TextEditingController _cpasscontroller = TextEditingController();
   final _formKey = GlobalKey<FormState>();
@@ -41,13 +47,16 @@ class _SignupScreenState extends State<SignupScreen> {
                   txtfieldContainer(
                       child: txtField(
                           hintTxt: "First Name",
+                          controller: _firstnamecontroller,
                           validator: (value) => validateNames(value))),
                   txtfieldContainer(
                       child: txtField(
+                          controller: _lastnamecontroller,
                           hintTxt: "Last Name",
                           validator: (value) => validateNames(value))),
                   txtfieldContainer(
                       child: txtField(
+                          controller: _emailcontroller,
                           hintTxt: "Email",
                           validator: (value) => validateEmail(value))),
                   txtfieldContainer(
@@ -69,6 +78,7 @@ class _SignupScreenState extends State<SignupScreen> {
                           child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 10),
                         child: txtField(
+                            controller: _phonenocontroller,
                             hintTxt: "Enter Mobile Number",
                             validator: (value) => validateMobile(value)),
                       ))
@@ -114,10 +124,20 @@ class _SignupScreenState extends State<SignupScreen> {
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: CommonButton(
                 text: "Signup",
-                onPressed: () {
+                onPressed: () async {
                   if (_formKey.currentState.validate()) {
                     _formKey.currentState.save();
+                    Map userData = {
+                      "contact_number": "+971 " + _phonenocontroller.text,
+                      "email_address": _emailcontroller.text,
+                      "first_name": _firstnamecontroller.text,
+                      "last_name": _lastnamecontroller.text,
+                    };
+                    signupWithEmail(context: context, userData: userData);
                     Navigator.pushNamed(context, "/signup_otp");
+                  } else {
+                    Toast.show("Please enter the details coorectly", context,
+                        duration: Toast.LENGTH_LONG, gravity: Toast.BOTTOM);
                   }
                 },
               ),

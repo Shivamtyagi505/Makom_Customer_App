@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:makom_customer_app/constants.dart';
@@ -5,14 +6,81 @@ import 'package:otp_text_field/otp_field.dart';
 import 'package:otp_text_field/style.dart';
 import 'package:makom_customer_app/widgets/index.dart';
 
+// ignore: must_be_immutable
 class OtpScreen extends StatefulWidget {
-  const OtpScreen({Key key}) : super(key: key);
+  String mobile;
+
+  OtpScreen({this.mobile});
 
   @override
   _OtpScreenState createState() => _OtpScreenState();
 }
 
 class _OtpScreenState extends State<OtpScreen> {
+  String otpEntered = "";
+
+  final _auth = FirebaseAuth.instance;
+  String _verificationId;
+
+  @override
+  void initState() {
+    super.initState();
+    verifyPhone();
+  }
+
+  Future<void> verifyPhone() async {
+    PhoneVerificationFailed verificationFailed =
+        (FirebaseAuthException authException) {
+      print(
+          'Phone number verification failed. Code: ${authException.code}. Message: ${authException.message}');
+    };
+    PhoneVerificationCompleted verificationCompleted =
+        (PhoneAuthCredential phoneAuthCredential) async {
+      await _auth.signInWithCredential(phoneAuthCredential);
+      print(
+          "Phone number automatically verified and user signed in: ${_auth.currentUser.uid}");
+    };
+    PhoneCodeSent codeSent =
+        (String verificationId, [int forceResendingToken]) async {
+      print('Please check your phone for the verification code.');
+      _verificationId = verificationId;
+    };
+
+    PhoneCodeAutoRetrievalTimeout codeAutoRetrievalTimeout =
+        (String verificationId) {
+      print("verification code: " + verificationId);
+      _verificationId = verificationId;
+    };
+
+    try {
+      await _auth.verifyPhoneNumber(
+          phoneNumber: widget.mobile,
+          timeout: const Duration(seconds: 5),
+          verificationCompleted: verificationCompleted,
+          verificationFailed: verificationFailed,
+          codeSent: codeSent,
+          codeAutoRetrievalTimeout: codeAutoRetrievalTimeout);
+    } catch (e) {
+      print("Failed to Verify Phone Number: $e");
+    }
+  }
+
+  void signInWithPhoneNumber() async {
+    try {
+      final AuthCredential credential = PhoneAuthProvider.credential(
+        verificationId: _verificationId,
+        smsCode: otpEntered,
+      );
+
+      final User user = (await _auth.signInWithCredential(credential)).user;
+
+      print("Successfully signed in UID: ${user.uid}");
+      showDialog();
+    } catch (e) {
+      print("Failed to sign in: " + e.toString());
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     var mq = MediaQuery.of(context).size;
@@ -59,12 +127,17 @@ class _OtpScreenState extends State<OtpScreen> {
             Column(
               children: [
                 OTPTextField(
-                  length: 4,
+                  length: 6,
                   width: MediaQuery.of(context).size.width,
-                  fieldWidth: width * 0.2,
+                  fieldWidth: width * 0.1,
                   style: TextStyle(fontSize: 47, fontWeight: FontWeight.bold),
                   textFieldAlignment: MainAxisAlignment.spaceAround,
                   fieldStyle: FieldStyle.underline,
+                  onChanged: (value) {
+                    setState(() {
+                      otpEntered = value;
+                    });
+                  },
                   onCompleted: (pin) {
                     print("Completed: " + pin);
                   },
@@ -84,7 +157,10 @@ class _OtpScreenState extends State<OtpScreen> {
                 SizedBox(height: height * 0.05),
                 CommonButton(
                   text: "Verify & Proceed",
-                  onPressed: () => showDialog(),
+                  onPressed: () {
+                    signInWithPhoneNumber();
+                    // showDialog();
+                  },
                 ),
               ],
             ),

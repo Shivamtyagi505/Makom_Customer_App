@@ -1,11 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:makom_customer_app/constants.dart';
+import 'package:makom_customer_app/screens/auth/signup_otp.dart';
 import 'package:makom_customer_app/screens/termsAndConditions/policies_screen.dart';
 import 'package:makom_customer_app/utils/index.dart';
 import 'package:makom_customer_app/widgets/index.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
+  @override
+  _LoginScreenState createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
+
+  TextEditingController _phonenocontroller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -24,19 +32,44 @@ class LoginScreen extends StatelessWidget {
               child: Column(
                 children: [
                   txtfieldContainer(
-                      child: txtField(
-                          hintTxt: "Email",
-                          validator: (value) => validateEmail(value))),
-                  txtfieldContainer(
-                      child: txtField(
-                          hintTxt: "Password",
-                          validator: (value) => validatePassword(value))),
+                      child: Row(
+                    children: [
+                      Container(
+                          child: heading(
+                              text: "+971", color: labelColor, size: 18)),
+                      Container(
+                        height: 45,
+                        width: 1,
+                        child: VerticalDivider(
+                          color: Colors.black,
+                          thickness: 1,
+                          width: 1,
+                        ),
+                      ),
+                      Expanded(
+                          child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
+                        child: txtField(
+                            controller: _phonenocontroller,
+                            hintTxt: "Enter Mobile Number",
+                            validator: (value) => validateMobile(value)),
+                      ))
+                    ],
+                  )),
+                  SizedBox(
+                    height: 10,
+                  ),
                   CommonButton(
-                    text: "Login",
+                    text: "Send OTP",
                     onPressed: () {
                       if (_formKey.currentState.validate()) {
                         _formKey.currentState.save();
-                        Navigator.pushNamed(context, "/home");
+
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => OtpScreen(
+                                    mobile: "+91" + _phonenocontroller.text)));
                       }
                     },
                   ),

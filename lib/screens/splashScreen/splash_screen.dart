@@ -11,6 +11,7 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  
   void screenTransition() async {
     Timer(
         Duration(seconds: 3),

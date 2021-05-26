@@ -8,6 +8,7 @@ class KTextFormField extends StatelessWidget {
   final TextInputType keyboardType;
   final TextEditingController controller;
   final Function validator;
+  final Function onSaved;
   final bool obscure;
   final int maxLines;
   final bool haveShadow;
@@ -22,6 +23,7 @@ class KTextFormField extends StatelessWidget {
     this.obscure = false,
     this.maxLines = 1,
     this.haveShadow = false,
+    this.onSaved,
   }) : super(key: key);
 
   @override
@@ -35,6 +37,7 @@ class KTextFormField extends StatelessWidget {
               haveShadow ? labelColor.withOpacity(0.50) : Colors.transparent,
           borderRadius: BorderRadius.circular(10),
           child: TextFormField(
+              onSaved: onSaved,
               validator: validator,
               maxLines: maxLines,
               keyboardType: keyboardType,

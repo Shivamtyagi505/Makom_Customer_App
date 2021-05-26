@@ -1,0 +1,100 @@
+{
+  "project_info": {
+    "project_number": "1035773790708",
+    "project_id": "makom-delivery",
+    "storage_bucket": "makom-delivery.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1035773790708:android:fa8a5a3f8779b17ba5d1a1",
+        "android_client_info": {
+          "package_name": "com.example.makom_delivery_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1035773790708-qr1c0dolald0jsstseq3fa17ct2un55c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBf_54sXsw1tQ8zpnSDglch0wDdN_Z0Jas"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1035773790708-qr1c0dolald0jsstseq3fa17ct2un55c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1035773790708:android:96bfd6ad75b15dfaa5d1a1",
+        "android_client_info": {
+          "package_name": "com.webdriver.makom_custom"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1035773790708-04itfbbf0tsof2ndqv6kt7vnn5h92in4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.webdriver.makom_custom",
+            "certificate_hash": "46b8836bc9c09c123149d4b47f2c96d6e3fd63a5"
+          }
+        },
+        {
+          "client_id": "1035773790708-ajikmha7kkcnkpepr9j0vpc2sba3uvaq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.webdriver.makom_custom",
+            "certificate_hash": "14d02082005f48b3b4b261c806280434a69c658a"
+          }
+        },
+        {
+          "client_id": "1035773790708-as8d8lm5500ts1l5fhctp713cn55fo53.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.webdriver.makom_custom",
+            "certificate_hash": "6bef19f1495a825b13b051740d9b420306caa8e5"
+          }
+        },
+        {
+          "client_id": "1035773790708-nsg4jkhnb2th8p4qgri6nbmf3u92f0bb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.webdriver.makom_custom",
+            "certificate_hash": "2d7246831797066197b37ebc3924b8cfcbf4e7e7"
+          }
+        },
+        {
+          "client_id": "1035773790708-qr1c0dolald0jsstseq3fa17ct2un55c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBf_54sXsw1tQ8zpnSDglch0wDdN_Z0Jas"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1035773790708-qr1c0dolald0jsstseq3fa17ct2un55c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

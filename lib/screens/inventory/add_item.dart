@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:makom_customer_app/services/firestore_collection.dart';
 import 'package:makom_customer_app/utils/index.dart';
 import 'package:makom_customer_app/widgets/index.dart';
 
@@ -14,6 +15,10 @@ class AddItemsPage extends StatefulWidget {
 }
 
 class _AddItemsPageState extends State<AddItemsPage> {
+  String name;
+  String image;
+  String weight;
+
   final picker = ImagePicker();
   final _formKey = GlobalKey<FormState>();
 
@@ -52,12 +57,14 @@ class _AddItemsPageState extends State<AddItemsPage> {
                   label: "Name",
                   hintText: "Item's name",
                   validator: (value) => validateNames(value),
+                  onSaved: (value) => name = value,
                 ),
                 KTextFormField(
                   label: "Weight",
                   hintText: "Item's weight in KGs",
                   keyboardType: TextInputType.number,
                   validator: (value) => validateWeight(value),
+                  onSaved: (value) => weight = value,
                 ),
                 KDropDownField(
                   label: "Type",
@@ -80,9 +87,15 @@ class _AddItemsPageState extends State<AddItemsPage> {
     );
   }
 
-  void _onSubmit(context) {
+  void _onSubmit(context) async {
     if (_formKey.currentState.validate()) {
       _formKey.currentState.save();
+      Map<String, dynamic> _data = {
+        "name": name,
+        "image": "https://i.pinimg.com/originals/19/cb/a6/19cba675fd6a790f97a620877bc7b63d.jpg",
+        "weight": weight,
+      };
+      await CollectionFetcher().setItems(_data);
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           content:
               Text('You have successfully added the item in your inventory.')));
